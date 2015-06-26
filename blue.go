@@ -20,9 +20,10 @@ func Spray(s interface{}) bson.M {
 
 	for _, field := range fields {
 		name, omitempty := scanField(field)
-		val := values.FieldByName(name)
+		val := values.FieldByName(field.Name)
 
 		if omitempty {
+
 			zero := reflect.Zero(val.Type()).Interface()
 			current := val.Interface()
 
